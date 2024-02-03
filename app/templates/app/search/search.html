@@ -1,0 +1,23 @@
+{% extends "app/navbaar/base.html" %}
+
+{% block container %}
+
+{% if results %}
+<h2>Search Results:</h2>
+<ul>
+    {% for result in results %}
+        <li>
+            {% if result.city %}
+                City: {{ result.city.name }}
+            {% elif result.country %}
+                State: {{ result.country.name }}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock container %}
+
+
+
