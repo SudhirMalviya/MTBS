@@ -1,0 +1,35 @@
+{% extends "app/Admin_content/admindash.html" %}
+{% block adminDashboard %}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col">Poster</th>
+          <th scope="col">Title</th>
+          <th scope="col">Release Date</th>
+          <th scope="col">Director</th>
+          <th scope="col">Description</th>
+          <th scope="col">Language</th>
+          <th scope="col">Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie_instance in movie %}
+        <tr>
+          <td><img class="card-img" src="{{ movie_instance.poster.url }}" width="150px" height="150px" alt="{{ movie_instance.title }} Poster"></td>
+          <td><h5 class="card-title">{{ movie_instance.title }}</h5></td>
+          <td><p class="card-text">{{ movie_instance.release_date }}</p></td>
+          <td><a href="#" class="btn btn-primary">{{ movie_instance.director }}</a></td>
+          <td>{{ movie_instance.description }}</td>
+          <td>{{ movie_instance.language.name }}</td>
+          <td>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal{{ movie_instance.id }}">
+                Update
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock adminDashboard %}

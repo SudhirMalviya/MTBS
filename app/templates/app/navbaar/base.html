@@ -23,34 +23,41 @@
             <span class="navbar-toggler-icon"></span>
           </button>
       
-          <div class="mx-auto my-4 d-lg-none d-sm-block d-xs-block">
-            <div class="input-group">
-              <form method="post" action="{% url 'city_state_search' %}">
-                {% csrf_token %}
-              <span class="border-warning input-group-text bg-warning text-white"><i class="fa-solid fa-magnifying-glass"></i></span>
-              <input type="text" class="form-control border-warning" style="color:#7a7a7a">
-              <button class="btn btn-warning text-white">Search</button>
-              <form>
-            </div>
-          </div>
+         
           <div class=" collapse navbar-collapse" id="navbarNavDropdown">
             <div class="ms-auto d-none d-lg-block">
               <div class="input-group">
-                <span class="border-warning input-group-text bg-warning text-white"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" name="search" class="form-control border-warning" style="color:#7a7a7a">
-                <button class="btn btn-warning text-white">Search</button>
+                
+             <input type="search" name="search" placeholder="search city movie " class="form-control border-warning transparent-input" style="width:400px; color:#7a7a7a">
+              
               </div>
             </div>
             <ul class="navbar-nav ms-auto ">
+              <li class="nav-item">
+                <div class="dropdown">
+                    <button class="btn btn-secondary " type="button"   aria-haspopup="true" aria-expanded="false">
+                        {{ query | default:"City" }}
+                    </button>
+                    <a href="{% url 'all_city_data' %}" style="text-decoration:none;">     
+                      <i class="fa-regular fa-square-caret-down"></i>
+                       
+                    </a>
+                </div>
+            </li>
+            
+            <script>
+                function changeCity(cityInfo) {
+                    document.getElementById("cityDropdown").innerText = cityInfo;
+                }
+            </script>
              
             
             </ul>
-            <ul class="navbar-nav ms-auto ">
+            <ul class="navbar-nav ms-5 ">
+             
+            
               <li class="nav-item">
-                <a class="nav-link mx-2 text-uppercase" href="#"> City</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link mx-2 text-uppercase" href="#"><i class="fa-solid fa-cart-shopping me-1"></i> login</a>
+                <a class="nav-link mx-2 text-uppercase" href="#"> login</a>
               </li>
               <li class="nav-item">
                 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">side</button>
